@@ -1,15 +1,13 @@
-const express = require('express');
+import express from 'express';
+import mongoose from 'mongoose';
+import conexion from './conexion.js';
+import cors from 'cors';
+import productosRoutes from './routes/productosRoutes.js';
+import categoriasRoutes from './routes/categoriasRoutes.js';
+import usuariosRoutes from './routes/usuariosRoutes.js';
+
 const app = express();
-const mongoose = require('mongoose');
-const conexion = require('./conexion');
-const cors = require('cors');
 app.use(cors());
-
-
-const productosRoutes = require('./routes/productosRoutes');
-const categoriasRoutes = require('./routes/categoriasRoutes');
-const usuariosRoutes = require('./routes/usuariosRoutes');
-
 
 mongoose.connect(conexion)
     .then(() => {
