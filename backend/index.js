@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const conexion = require('./conexion');
 const cors = require('cors');
 app.use(cors());
-
+ 
 
 const productosRoutes = require('./routes/productosRoutes');
 const categoriasRoutes = require('./routes/categoriasRoutes');
