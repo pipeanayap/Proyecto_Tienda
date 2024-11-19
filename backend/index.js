@@ -5,9 +5,16 @@ import cors from 'cors';
 import productosRoutes from './routes/productosRoutes.js';
 import categoriasRoutes from './routes/categoriasRoutes.js';
 import usuariosRoutes from './routes/usuariosRoutes.js';
+import documentacionRoutes from './routes/documentacionRoutes.js';
+import ejs from 'ejs';
 
 const app = express();
 app.use(cors());
+
+app.set('view engine', 'ejs');
+app.engine('ejs', ejs.__express);
+
+
 
 mongoose.connect(conexion)
     .then(() => {
@@ -25,5 +32,6 @@ app.listen(3000, () => {
 app.use(productosRoutes);
 app.use(categoriasRoutes);
 app.use(usuariosRoutes);
+app.use(documentacionRoutes);
 
 
