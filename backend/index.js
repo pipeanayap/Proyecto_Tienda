@@ -10,6 +10,7 @@ const productosRoutes = require('./routes/productosRoutes');
 const categoriasRoutes = require('./routes/categoriasRoutes');
 const usuariosRoutes = require('./routes/usuariosRoutes');
 
+
 mongoose.connect(conexion)
     .then(() => {
         console.log('Conectado a la base de datos')
