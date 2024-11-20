@@ -3,7 +3,8 @@ name: Build and push docker image
 on:
   push:
     branches:
-      - '*' # Ejecutar en cualquier rama
+      - '*'
+   workflow_dispatch: 
 
 jobs:
   build-and-push:
