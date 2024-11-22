@@ -1,4 +1,7 @@
-const express = require('express');
+import express from 'express';
+import Producto from '../models/producto.js';
+import bodyParser from 'body-parser';
+
 const router = express.Router();
 const Producto = require('../models/producto');
 const Categoria = require('../models/categoria');
