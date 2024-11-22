@@ -23,6 +23,6 @@ jobs:
           docker push pipeanayaparada/apiTienda:${{ github.sha }}
           docker push pipeanayaparada/apiTienda:latest
 
-      - name: Notificar estado
-        if: always()
-        run: echo "El pipeline finalizó con el estado \:\ ${{ job.status }}"
+      # - name: Notificar estado
+      #   if: always()
+      #   run: echo "El pipeline finalizó con el estado \:\ ${{ job.status }}"
