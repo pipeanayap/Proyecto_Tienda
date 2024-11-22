@@ -16,12 +16,12 @@ jobs:
         run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
 
       - name: Build docker image
-        run: docker build -t pipeanayaparada/apiTienda:${{ github.sha }} ./backend/Dockerfile
+        run: docker build -t pipeanayaparada/api_tienda:${{ github.sha }} ./backend/Dockerfile
 
       - name: Push docker image
         run: |
-          docker push pipeanayaparada/apiTienda:${{ github.sha }}
-          docker push pipeanayaparada/apiTienda:latest
+          docker push pipeanayaparada/api_tienda:${{ github.sha }}
+          docker push pipeanayaparada/api_tienda:latest
 
       # - name: Notificar estado
       #   if: always()
