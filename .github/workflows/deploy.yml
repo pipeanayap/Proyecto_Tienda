@@ -16,7 +16,9 @@ jobs:
         run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
 
       - name: Build docker image
-        run: docker build -t pipeanayaparada/api_tienda:${{ github.sha }} -f ./backend/Dockerfile .
+        run: |
+          cd backend
+          docker build -t pipeanayaparada/api_tienda:${{ github.sha }} .
 
       - name: Push docker image
         run: |
