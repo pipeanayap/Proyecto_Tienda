@@ -513,7 +513,7 @@ html {
   
   .top-header-area {
     position: absolute;
-    z-index: 999;
+    z-index: 9999;
     width: 100%;
     padding: 25px 0;
   }
@@ -2653,6 +2653,103 @@ html {
 }
 
 .add-to-cart {
-  z-index: 1000; /* Trae el botón al frente */
   position: relative; /* Asegura que z-index funcione */
+  z-index: 1;
 }
+
+.product-filters {
+  margin: 20px 0;
+}
+
+/* Contenedor principal */
+.category-carousel {
+  position: relative;
+  overflow: hidden; /* Oculta categorías que no están visibles */
+  background: linear-gradient(135deg, #f7f7f7, #eaeaea); /* Fondo degradado */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+  padding: 15px 50px; /* Espacio adicional para los botones */
+}
+
+/* Pista del slider */
+.category-carousel .slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Desplazamiento suave */
+  gap: 15px; /* Espaciado entre categorías */
+}
+
+/* Botones de navegación */
+.category-carousel .slider-nav {
+  position: absolute;
+  top: 50%; /* Centra el botón verticalmente */
+  transform: translateY(-50%); /* Ajusta el centro del botón */
+  background: #ff7f50; /* Botón naranja */
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra de los botones */
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+/* Botón izquierdo */
+.category-carousel .slider-nav.left {
+  left: 10px; /* Fuera del contenedor, a la izquierda */
+}
+
+/* Botón derecho */
+.category-carousel .slider-nav.right {
+  right: 10px; /* Fuera del contenedor, a la derecha */
+}
+
+/* Hover en los botones */
+.category-carousel .slider-nav:hover {
+  transform: translateY(-50%) scale(1.1); /* Botón crece al pasar el mouse */
+}
+
+/* Botones de categoría */
+.category-carousel .slider-track li {
+  flex: 0 0 calc(16.66% - 15px); /* Cada botón ocupa el 16.66% del ancho (6 por fila) */
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase; /* Texto en mayúsculas */
+  color: #333; /* Texto oscuro */
+  background: #ffffff; /* Fondo blanco */
+  border-radius: 25px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra de los botones */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+
+/* Hover y categoría activa */
+.category-carousel .slider-track li:hover,
+.category-carousel .slider-track li.active {
+  background: #ff7f50; /* Naranja vibrante */
+  color: #fff; /* Texto blanco */
+  box-shadow: 0 6px 12px rgba(255, 127, 80, 0.4); /* Sombra colorida */
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .category-carousel {
+      padding: 10px 40px; /* Ajusta el espacio en pantallas pequeñas */
+  }
+
+  .category-carousel .slider-track li {
+      flex: 0 0 calc(33.33% - 15px); /* Mostrar 3 categorías por fila en pantallas pequeñas */
+  }
+
+  .category-carousel .slider-nav {
+      width: 30px;
+      height: 30px;
+  }
+}
+

@@ -140,40 +140,69 @@ const fetchCategorias = async () => {
 
 // Función para renderizar categorías en los filtros
 const renderCategorias = (categorias) => {
-    const categoryFilters = document.querySelector('.product-filters ul');
-    categoryFilters.innerHTML = ''; // Limpia el contenedor de filtros
+    const categoryTrack = document.querySelector('#category-filters');
+    categoryTrack.innerHTML = ''; // Limpia las categorías
 
-    // Filtro "All" para mostrar todos los productos
-    const allFilter = `
-        <li class="active" data-filter="*">All</li>
-    `;
-    categoryFilters.innerHTML += allFilter;
-
-    // Generar filtros dinámicos basados en las categorías
+    // Generar dinámicamente las categorías
     categorias.forEach(categoria => {
-        const categoryFilter = `
+        const categoryItem = `
             <li data-filter=".${categoria.nombre.toLowerCase().replace(/\s+/g, '-')}">
                 ${categoria.nombre}
             </li>
         `;
-        categoryFilters.innerHTML += categoryFilter;
+        categoryTrack.innerHTML += categoryItem;
     });
 
-    // Agregar eventos a los filtros
-    categoryFilters.querySelectorAll('li').forEach(filter => {
-        filter.addEventListener('click', (e) => {
+    // Agregar eventos de filtro
+    categoryTrack.querySelectorAll('li').forEach(button => {
+        button.addEventListener('click', (e) => {
             e.preventDefault();
-            const filterValue = filter.getAttribute('data-filter');
+            const filterValue = button.getAttribute('data-filter');
 
-            // Aplicar clase activa
-            categoryFilters.querySelectorAll('li').forEach(f => f.classList.remove('active'));
-            filter.classList.add('active');
+            // Resaltar la categoría activa
+            categoryTrack.querySelectorAll('li').forEach(b => b.classList.remove('active'));
+            button.classList.add('active');
 
             // Filtrar productos
             filterProductos(filterValue);
         });
     });
+
+    // Configurar el slider
+    setupSlider();
 };
+
+const setupSlider = () => {
+    const track = document.querySelector('.slider-track');
+    const leftNav = document.querySelector('.slider-nav.left');
+    const rightNav = document.querySelector('.slider-nav.right');
+    const categoryItems = document.querySelectorAll('.slider-track li');
+    const categoryWidth = categoryItems[0].offsetWidth + 15; // Ancho de una categoría más margen
+    const categoriesPerView = 6; // Categorías visibles
+    let currentPosition = 0;
+
+    // Botón izquierdo
+    leftNav.addEventListener('click', () => {
+        if (currentPosition > 0) {
+            currentPosition -= categoriesPerView;
+            track.style.transform = `translateX(-${currentPosition * categoryWidth}px)`;
+        }
+    });
+
+    // Botón derecho
+    rightNav.addEventListener('click', () => {
+        if ((currentPosition + categoriesPerView) < categoryItems.length) {
+            currentPosition += categoriesPerView;
+            track.style.transform = `translateX(-${currentPosition * categoryWidth}px)`;
+        }
+    });
+};
+
+
+// Renderizar categorías al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    renderCategorias(categorias);
+});
 
 // Ajustar la altura de los contenedores de productos
 const adjustPaginationPosition = () => {
