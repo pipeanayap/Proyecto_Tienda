@@ -11,7 +11,7 @@ router.get('/categorias', async (req, res) => {
             res.json(categorias);;
         })
         .catch((error) => {
-            res.status(400).send(err)
+            res.status(400).send(error)
         });
 
 });
@@ -22,7 +22,7 @@ router.get('/categorias/:id', async (req, res) => {
             res.json(categoria);
         })
         .catch((error) => {
-            res.send(err);
+            res.send(error);
         });
 });
 
@@ -33,7 +33,7 @@ router.delete('/categorias/:id', async (req, res) => {
             res.json(categoria);
         })
         .catch((error) => {
-            res.send(err);
+            res.send(error);
         });
 })
 
@@ -55,7 +55,7 @@ router.post('/categorias', async (req, res) => {
             res.json(categoria);
         })
         .catch((error) => {
-            res.status(400).send(err);
+            res.status(400).send(error);
 });
 
 });
