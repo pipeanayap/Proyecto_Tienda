@@ -25,4 +25,4 @@ jobs:
 
       - name: Notificar estado
         if: always()
-        run: echo "El pipeline finalizó con el estado: ${{ job.status }}"
+        run: echo "El pipeline finalizó con el estado \:\ ${{ job.status }}"
