@@ -17,8 +17,11 @@ jobs:
 
       - name: Build docker image
         run: |
-          cd backend
+          cd backend  
           docker build -t pipeanayaparada/api_tienda:${{ github.sha }} .
+
+      - name: Tag latest
+        run: docker tag pipeanayaparada/api_tienda:${{github.sha}} pipeanayaparada/api_tienda:latest
 
       - name: Push docker image
         run: |
