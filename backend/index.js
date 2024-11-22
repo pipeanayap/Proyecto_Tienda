@@ -1,14 +1,20 @@
-const express = require('express');
+import express from 'express';
+import mongoose from 'mongoose';
+import conexion from './conexion.js';
+import cors from 'cors';
+import productosRoutes from './routes/productosRoutes.js';
+import categoriasRoutes from './routes/categoriasRoutes.js';
+import usuariosRoutes from './routes/usuariosRoutes.js';
+import documentacionRoutes from './routes/documentacionRoutes.js';
+import ejs from 'ejs';
+
 const app = express();
-const mongoose = require('mongoose');
-const conexion = require('./conexion');
-const cors = require('cors');
 app.use(cors());
 
+app.set('view engine', 'ejs');
+app.engine('ejs', ejs.__express);
 
-const productosRoutes = require('./routes/productosRoutes');
-const categoriasRoutes = require('./routes/categoriasRoutes');
-const usuariosRoutes = require('./routes/usuariosRoutes');
+
 
 
 
@@ -28,6 +34,7 @@ app.listen(3000, () => {
 app.use(productosRoutes);
 app.use(categoriasRoutes);
 app.use(usuariosRoutes);
+app.use(documentacionRoutes);
 
 //
 

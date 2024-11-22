@@ -1,13 +1,12 @@
-//MVC
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema; 
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
 const productosSchema = new Schema({
-    nombre:{
+    nombre: {
         type: String,
         required: true
     },
-    precio:{
+    precio: {
         type: Number,
         required: true
     },
@@ -21,8 +20,7 @@ const productosSchema = new Schema({
         type: String, // Array de URLs de imágenes
         required: false
     },
-    
-})
+});
 
 const Producto = mongoose.model('Producto', productosSchema, 'productos');
-module.exports = Producto;
+export default Producto;

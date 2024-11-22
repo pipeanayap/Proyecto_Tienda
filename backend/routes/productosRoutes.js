@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import Producto from '../models/producto.js';
+import bodyParser from 'body-parser';
+
 const router = express.Router();
-const Producto = require('../models/producto');
-const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());  // Para que pueda parsear application/json
 
@@ -55,4 +56,4 @@ router.post('/productos', async (req, res) => {
         });
 });
 
-module.exports = router;
+export default router;

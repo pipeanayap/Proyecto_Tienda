@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const Usuario = require('../models/usuario');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcryptjs'); // Para el hash de contraseñas
+import express from 'express';
+import bodyParser from 'body-parser';
+import bcrypt from 'bcryptjs';
+import Usuario from '../models/usuario.js';
 
+const router = express.Router();
 
 router.use(bodyParser.json());
 
@@ -126,7 +126,5 @@ router.post('/login', async (req, res) => {
 });
 
 
-
-
-module.exports = router;
+export default router;
 
